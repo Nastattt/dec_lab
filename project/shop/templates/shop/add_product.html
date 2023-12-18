@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <title>Сайт с товарами</title>
+</head>
+<body>
+    <header>
+        <h1>Сайт с товарами</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}" class="home">Главная</a></li>
+                <li><a href="{% url 'add' %}" class="add">Добавить товар</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+         <h2>Список товаров</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Product</button>
+        </form>
+    </main>
+</body>
+</html>

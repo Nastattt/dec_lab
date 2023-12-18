@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <title>Сайт с товарами</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Сайт с товарами</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}" class="home">Главная</a></li>
+                <li><a href="{% url 'add' %}" class="add">Добавить товар</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+         <h2>Список товаров</h2>
+        {% for product in products %}
+            <div class="product">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+            </div>
+        {% endfor %}
+    </main>
+</body>
+</html>
